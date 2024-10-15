@@ -47,24 +47,47 @@ bash quick_install.sh
 
 This command will also download the SMIRK pretrained model which can also be found on [Google Drive](https://drive.google.com/file/d/1T65uEd9dVLHgVw5KiUYL66NUee-MCzoE/view?usp=sharing).
 
+## Checkpoint
+We provide two final version as follows:
+
+```bash
+/cto_labs/zhulei/smirk_token++/logs/adain_token_then_add_multi_loss/model_198.pt (without 203 landmark)
+/cto_labs/zhulei/smirk_token++/logs/add_203_lm_new_bigger_weight/model_198.pt (with 203 landmark)
+```
+
+
+
 ## Demo 
-We provide two demos. One that can be used to test the model on a single image,
+We provide several demos. One you can test the model on a single image by 
 
 ```bash
-python demo.py --input_path samples/test_image2.png --out_path results/ --checkpoint pretrained_models/SMIRK_em1.pt --crop
+python demo.py --input_path samples/test_image2.png --out_path results/ --checkpoint /cto_labs/zhulei/smirk_token++/logs/adain_token_then_add_multi_loss/model_198.pt --crop
 ```
 
-and one that can be used to test the model on a video,
+you can test the model on a video by
 
 ```bash
-python demo_video.py --input_path samples/dafoe.mp4 --out_path results/ --checkpoint pretrained_models/SMIRK_em1.pt --crop --render_orig
+python demo_video.py --input_path samples/dafoe.mp4 --out_path results/ --checkpoint /cto_labs/zhulei/smirk_token++/logs/adain_token_then_add_multi_loss/model_198.pt --crop --render_orig
 ```
+
+if you want to swap face by swapping tokens, you can use
+
+```bash
+python test_image_swap_token.py --input_path samples/dafoe.mp4 --out_path results/ --checkpoint /cto_labs/zhulei/smirk_token++/logs/adain_token_then_add_multi_loss/model_198.pt --crop --render_orig
+```
+
+or if you want to swap expressions, you can use
+
+```bash
+python test_image_swap_expression.py --input_path samples/dafoe.mp4 --out_path results/ --checkpoint /cto_labs/zhulei/smirk_token++/logs/adain_token_then_add_multi_loss/model_198.pt --crop --render_orig
+```
+
 
 ## Training
 <details>
 <summary>Dataset Preparation</summary>
 
-SMIRK was trained on a combination of the following datasets: LRS3, MEAD, CelebA, and FFHQ. 
+SMIRK was trained on a combination of the following datasets: LRS3, CelebA, and FFHQ. 
 
 1. ~~§§Download the LRS3 dataset from [here](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs3.html).~~ We are aware that currently this dataset has been removed from the website. It can be replaced with any other similar dataset, e.g. [LRS2](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html). 
 
@@ -100,24 +123,12 @@ python train.py configs/config_pretrain.yaml train.log_path="logs/pretrain"
 
 
 ### Training
-After pretraining, at the core stage of SMIRK, we freeze the shape and pose encoders and train the expression encoder with the full SMIRK framework (reconstruction path and cycle path). 
+After pretraining, we train pose, shape, and expression encoders and train our token encoder as well as our designed generator.
 
 ```bash
-python train.py configs/config_train.yaml resume=logs/pretrain/first_stage_pretrained_encoder.pt train.loss_weights.emotion_loss=1.0
+python train.py configs/config_train.yaml resume=/cto_labs/zhulei/smirk/pretrain/model_298.pt train.loss_weights.emotion_loss=1.0
 ```
 
-
-## Citation
-If you find this work useful, please consider citing:
-
-```bibtex
-@inproceedings{SMIRK:CVPR:2024,
-    title = {3D Facial Expressions through Analysis-by-Neural-Synthesis},
-    author = {Retsinas, George and Filntisis, Panagiotis P., and Danecek, Radek and Abrevaya, Victoria F. and Roussos, Anastasios and Bolkart, Timo and Maragos, Petros},
-    booktitle = {Conference on Computer Vision and Pattern Recognition (CVPR)},
-    year = {2024}
-}
-```
 
 
 ## Acknowledgements 
