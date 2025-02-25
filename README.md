@@ -37,7 +37,7 @@ Note:We have provided two versions on the pretrained model. Compared to v1, v2 i
 We provide several demos. One you can test the model on a single image by 
 
 ```bash
-python demo.py --input_path samples/test_image2.png --out_path results/ --checkpoint pretrained_models/TEASER_v1.pt --crop
+python demo.py --input_path samples/test_image1.png --out_path results/ --checkpoint pretrained_models/TEASER_v1.pt --crop
 ```
 
 you can test the model on a video by
