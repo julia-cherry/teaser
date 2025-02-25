@@ -1,5 +1,8 @@
 # TEASER: Token Enhanced Spatial Modeling for Expressions Reconstruction
 
+
+This repository is the official implementation of the ICLR 2024(https://arxiv.org/abs/2502.10982) paper 3D Facial Expressions through Analysis-by-Neural Synthesis.
+
 ## Installation
 You need to have a working version of PyTorch and Pytorch3D installed. We provide a `requirements.txt` file that can be used to install the necessary dependencies for a Python 3.9 setup with CUDA 11.7:
 
