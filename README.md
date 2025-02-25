@@ -27,7 +27,9 @@ bash quick_install.sh
 ```
 *The above installation includes downloading the [FLAME](https://flame.is.tue.mpg.de/) model. This requires registration. If you do not have an account you can register at [https://flame.is.tue.mpg.de/](https://flame.is.tue.mpg.de/)*
 
-This command will also download the TEASER pretrained model which can also be found on [Google Drive](https://drive.google.com/file/d/1T65uEd9dVLHgVw5KiUYL66NUee-MCzoE/view?usp=sharing).
+This command will also download the TEASER pretrained model which can also be found on Google Drive.
+
+Note:We have provided two versions on the pretrained model. Compared to v1, v2 incorporates our pose-dependent landmark loss.
 
 
 
