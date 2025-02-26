@@ -13,8 +13,8 @@ This repository is the official implementation of the ICLR 2024 paper [TEASER: T
 </p>
 
 <p align="center"> 
-<img src="samples/cover.png">
-SMIRK reconstructs 3D faces from monocular images with facial geometry that faithfully recover extreme, asymmetric, and subtle expressions.
+<img src="samples/show.png">
+TEASER reconstructs precise 3D facial expression and generates high-fidelity face image through estimating hybrid parameters for 3D facial reconstruction.
 </p>
 
 
