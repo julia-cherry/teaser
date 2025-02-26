@@ -12,6 +12,11 @@ This repository is the official implementation of the ICLR 2024 paper [TEASER: T
   </a>
 </p>
 
+<p align="center"> 
+<img src="samples/cover.png">
+SMIRK reconstructs 3D faces from monocular images with facial geometry that faithfully recover extreme, asymmetric, and subtle expressions.
+</p>
+
 
 ## Installation
 You need to have a working version of PyTorch and Pytorch3D installed. We provide a `requirements.txt` file that can be used to install the necessary dependencies for a Python 3.9 setup with CUDA 11.7:
